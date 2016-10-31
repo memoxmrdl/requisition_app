@@ -14,6 +14,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'haml-rails'
 gem 'responders'
+gem 'devise'
 
 group :development, :test do
   gem 'factory_girl_rails'
