@@ -9,7 +9,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :curp
       t.string :rfc
       t.integer :gender
-      t.integer :birth_state
+      t.string :birth_state
       t.string :phone_number
       t.belongs_to :user, index: true
       t.timestamps null: false
