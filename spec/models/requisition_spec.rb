@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Requisition, type: :model do
   let(:user) { create(:user, :with_profile) }
-  let(:requisition) { create(:requisition, user: user) }
+  let(:requisition) { create(:requisition_with_personal_references, user: user) }
 
   it 'should be valid' do
     expect(requisition).to be_valid

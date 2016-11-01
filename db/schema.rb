@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101171542) do
+ActiveRecord::Schema.define(version: 20161101181053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20161101171542) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "personal_references", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "first_last_name"
+    t.string   "second_last_name"
+    t.string   "cell_phone_number"
+    t.integer  "requisition_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "personal_references", ["requisition_id"], name: "index_personal_references_on_requisition_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"

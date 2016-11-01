@@ -1,7 +1,10 @@
 class Requisition < ActiveRecord::Base
+  PERSONAL_REFERENCES_COUNT = 3
+
+  has_many :personal_references, dependent: :destroy
   belongs_to :user
 
-  validate :check_profile!, on: [:create, :update]
+  validate :check_profile
   validates :user, presence: true
   validates :income, presence: true
   validates :address_years, presence: true
@@ -18,7 +21,7 @@ class Requisition < ActiveRecord::Base
 
   private
 
-  def check_profile!
+  def check_profile
     errors.add(:base, 'Para crear una solicitud debe completar su perfil') unless user && user.profile&.valid?
   end
 end
