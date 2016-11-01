@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_many :identities, dependent: :destroy
+  has_many :requisitions, dependent: :destroy
 end
