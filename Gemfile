@@ -18,8 +18,10 @@ gem 'devise'
 gem 'faker'
 
 group :development, :test do
+  gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'capybara'
   gem 'pry-rails'
   gem 'byebug'
 end
