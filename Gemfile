@@ -16,8 +16,11 @@ gem 'haml-rails'
 gem 'responders'
 gem 'devise'
 gem 'faker'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
