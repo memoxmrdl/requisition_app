@@ -1,0 +1,5 @@
+.jumbotron
+  %h1 Tu credito
+  %p solicitalo en no mayor de 2 horas en autorizión.
+  %p
+    = link_to "Solicitar con Facebook", user_omniauth_authorize_path(provider: :facebook), class: 'btn btn-lg btn-primary'
