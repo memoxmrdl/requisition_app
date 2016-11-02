@@ -1,0 +1,12 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-datepicker";
+@import "requisitions";
+
+body {
+  padding: 20px 0;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}

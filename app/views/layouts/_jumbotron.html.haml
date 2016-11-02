@@ -1,0 +1,7 @@
+.jumbotron
+  %h1 Tu prestamo en 2 horas
+  %p solicitad de $10,000 o hasta $100,000 pesos y pagalo a pagos chiquititos.
+  - if user_signed_in?
+    = link_to t('titles.new_requisition'), new_requisition_path, class: 'btn btn-lg btn-primary'
+  - else
+    %p= link_to "Solicitar con Facebook", user_omniauth_authorize_path(provider: :facebook), class: 'btn btn-lg btn-primary'
