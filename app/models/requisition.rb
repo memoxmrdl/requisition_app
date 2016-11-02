@@ -21,6 +21,18 @@ class Requisition < ActiveRecord::Base
 
   accepts_nested_attributes_for :personal_references, allow_destroy: true
 
+  def self.marital_status_attributes_for_select
+    marital_statuses.map do |marital_status, _|
+      [I18n.t("enums.marital_status.#{marital_status}"), marital_status]
+    end
+  end
+
+  def self.payment_terms_attributes_for_select
+    payment_terms.map do |payment_term, _|
+      [I18n.t("enums.payment_terms.#{payment_term}"), payment_term]
+    end
+  end
+
   private
 
   def check_profile

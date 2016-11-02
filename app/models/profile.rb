@@ -11,4 +11,10 @@ class Profile < ActiveRecord::Base
   validates :birth_state, presence: true
 
   enum gender: [:female, :male]
+
+  def self.gender_attributes_for_select
+    genders.map do |gender, _|
+      [I18n.t("enums.gender.#{gender}"), gender]
+    end
+  end
 end

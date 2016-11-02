@@ -52,6 +52,21 @@ es:
   actions:
     edit: Editar
     delete: Eliminar
+  enums:
+    gender:
+      female: Femenino
+      male: Masculino
+    marital_status:
+      single: Soltero/a
+      engaged: Comprometido/a
+      married: Casado/a
+      divorced: Divercioado/a
+      widower: Viudo/a
+    payment_terms:
+      counted: Contado
+      payment_one: 12 meses con intereses
+      payment_second: 6 meses con intereses
+      payment_third: 3 meses sin intereses
   date:
     abbr_day_names:
     - dom
