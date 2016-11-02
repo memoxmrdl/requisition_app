@@ -21,6 +21,7 @@ gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'pundit', '~> 1.0.1'
+gem 'puma'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -37,3 +38,5 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+gem 'rails_12factor', group: :production
