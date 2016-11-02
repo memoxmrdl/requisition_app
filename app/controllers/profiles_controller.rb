@@ -4,11 +4,13 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def edit
-    @profile = current_user.profile
+    @profile = find_profile
+    authorize @profile
   end
 
   def update
-    @profile = current_user.profile
+    @profile = find_profile
+    authorize @profile
     @profile.update(profile_params)
 
     respond_with @profile, location: -> { edit_profile_path(@profile) }
@@ -19,5 +21,9 @@ class ProfilesController < ApplicationController
   def profile_params
     params.require(:profile).permit(:first_name, :second_name, :second_last_name, :first_last_name, :birth_date,
                                     :curp, :rfc, :gender, :birth_state, :phone_number)
+  end
+
+  def find_profile
+    Profile.find_by(id: params[:id])
   end
 end
