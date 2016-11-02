@@ -1,0 +1,13 @@
+= simple_form_for @profile do |f|
+  = f.error_notification
+  = f.input :first_name
+  = f.input :second_name
+  = f.input :first_last_name
+  = f.input :second_last_name
+  = f.input :birth_date, as: :string, input_html: { class: 'datepicker' }
+  = f.input :curp
+  = f.input :rfc
+  = f.input :gender, collection: Profile.genders.collect { |s| [s[0].humanize, s[0]] }, input_html: { class: 'form-control' }, include_blank: true
+  = f.input :birth_state, collection: State::STATES_LIST, input_html: { class: 'form-control' }, include_blank: true
+  = f.input :phone_number
+  = f.submit 'Actualizar', class: 'btn btn-primary btn-lg btn-block'

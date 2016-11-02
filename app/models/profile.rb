@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   validates :user, presence: true
   validates :first_name, presence: true
   validates :first_last_name, presence: true
+  validates :second_last_name, presence: true
   validates :birth_date, presence: true
   validates :curp, presence: true
   validates :gender, presence: true
