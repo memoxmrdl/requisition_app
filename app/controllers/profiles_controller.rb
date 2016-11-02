@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
+  respond_to :html
+
   def edit
     @profile = current_user.profile
   end
