@@ -1,38 +1,42 @@
 class CreateAuthenticateWithFacebookService
-  attr_accessor :auth, :identity, :user
+  attr_accessor :auth_params, :identity, :user, :profile
 
-  def initialize(auth, signed_in_resource =  nil)
-    @auth = auth
-    @identity = Identity.find_or_create_by(uid: auth.uid, provider: auth.provider)
+  def initialize(auth_params, signed_in_resource = nil)
+    @auth_params = auth_params
+    @identity = Identity.find_or_create_by(uid: @auth_params.uid, provider: @auth_params.provider)
     @user = signed_in_resource ? signed_in_resource : @identity.user
+    @profile = @user.try(:profile)
   end
 
   def auth
-    find_or_create_user
+    create_user unless user
+    add_identity_to_user
+    create_profile
+
+    user
   end
 
   private
 
-  def find_or_create_user
-    ActiveRecord::Base.transaction do
-      build_user
-      build_identity
-    end
-
-    @user
+  def create_user
+    @user = User.new(email: auth_params.info.email, password: Devise.friendly_token.first(8))
+    @user.save!
+  rescue ActiveRecord::RecordInvalid => invalid
+    user
   end
 
-  def build_user
-    if @user.nil?
-      @user = User.new(email: @auth.info.email, password: Devise.friendly_token[0, 8])
-      @user.save
-    end
-  end
-
-  def build_identity
+  def add_identity_to_user
     if @identity.user != @user
       @identity.user = @user
-      @identity.save
+      @identity.save!
+    end
+  end
+
+  def create_profile
+    unless @user.profile
+      @profile = Profile.new(first_name: auth_params.extra.raw_info.name)
+      @profile.user = @user
+      @profile.save!(validate: false)
     end
   end
 end

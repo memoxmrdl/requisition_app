@@ -1,6 +1,20 @@
 ---
 es:
   activerecord:
+    attributes:
+      profile:
+        first_name: Primer nombre
+        second_name: Segundo nombre
+        first_last_name: Apellido paterno
+        second_last_name: Apellido materno
+        birth_date: Fecha de nacimiento
+        curp: CURP
+        rfc: RFC
+        gender: Genero
+        phone_number: Numero telefonico/Celular
+        birth_state: Estado de nacimiento
+    models:
+      profile: Perfil
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

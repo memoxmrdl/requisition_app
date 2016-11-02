@@ -18,6 +18,8 @@ gem 'devise'
 gem 'faker'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'simple_form'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'dotenv-rails'
