@@ -1,9 +1,9 @@
 .container
   .row
     .col-lg-12
-      %h2 Solicitudes
+      %h2= t('titles.requisitions')
   .row
     .col-lg-12.mb-20
-      = link_to 'Nueva solicitud', new_requisition_path, class: 'btn btn-primary'
+      = link_to t('titles.new_requisition'), new_requisition_path, class: 'btn btn-primary'
   .row
     .col-lg-12= render 'requisitions_table'

@@ -1,5 +1,6 @@
 ---
 es:
+  app_name: RequisitionApp
   activerecord:
     attributes:
       profile:
@@ -52,6 +53,14 @@ es:
   actions:
     edit: Editar
     delete: Eliminar
+    save: Guardar
+    exit: Salir
+  titles:
+    my_profile: Mi perfil
+    actions: Acciones
+    edit_requisition: Editar solicitud
+    new_requisition: Nueva solicitud
+    requisitions: Solicitudes
   enums:
     profile:
       gender:
