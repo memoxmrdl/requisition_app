@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
+gem 'pundit', '~> 1.0.1'
 
 group :development, :test do
   gem 'dotenv-rails'

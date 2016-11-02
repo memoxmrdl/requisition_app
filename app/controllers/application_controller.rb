@@ -1,6 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  include Pundit
+
   self.responder = ApplicationResponder
   respond_to :html
 
@@ -12,8 +14,17 @@ class ApplicationController < ActionController::Base
     if resource.profile&.valid?
       super resource
     else
-      flash[:alert] = 'Es necesario completar tu perfil para poder crear solicitudes'
+      flash[:alert] = t('messages.missing_profile')
       edit_profile_path(resource.profile)
     end
+  end
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = t('messages.not_authorized_error')
+    redirect_to(request.referrer || root_path)
   end
 end
