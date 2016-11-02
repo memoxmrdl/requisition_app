@@ -13,14 +13,45 @@ es:
         gender: Genero
         phone_number: Numero telefonico/Celular
         birth_state: Estado de nacimiento
+      requisition:
+        income: Cuantos son sus ingresos mensuales?
+        address_years: No. de años donde vives en tu domicilio?
+        marital_status: Estado civil
+        requested_amout: Cantidad solicitada
+        payment_terms: Terminos de pago
+        bank: Nombre del banco
+        comment: Comentarios
+        company_name: Nombre de la empresa
+        company_phone_number: Telefono de la empresa
+        dependents_number: Cuantas personas dependen de usted?
+        company_position: Puesto en la empresa
+        has_sgmm: Cuenta con SGMM?
+        has_imss: Cuenta con IMSS?
+        has_car: Cuenta con coche?
+      personal_reference:
+        first_name: Primer nombre
+        second_name: Segundo nombre
+        first_last_name: Apellido paterno
+        second_last_name: Apellido materno
+        cell_phone_number: Numero de telefono/celular
     models:
       profile: Perfil
+      requisition: Solicitud
+      personal_references: Referencia
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+  messages:
+    not_authorized_error: No tiene autorización para esta operación
+    missing_profile_model: Es necesario completar su perfil para poder crear solicitudes
+    missing_profile_html: "Es necesario completar su <a href='%{path}'>perfil</a> para poder crear solicitudes"
+    are_you_sure: ¿Estas seguro?
+  actions:
+    edit: Editar
+    delete: Eliminar
   date:
     abbr_day_names:
     - dom

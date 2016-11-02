@@ -9,6 +9,7 @@
       = link_to 'RequisitionApp', root_path, class: 'navbar-brand'
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav
+        %li= link_to 'Solicitudes', requisitions_path if user_signed_in?
         %li= link_to 'Mi perfil', edit_profile_path(current_user.profile) if user_signed_in?
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?

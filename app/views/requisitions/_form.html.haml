@@ -1,0 +1,26 @@
+= simple_form_for @requisition do |f|
+  = f.error_notification
+  = f.input :company_name
+  = f.input :company_phone_number
+  = f.input :company_position
+  = f.input :requested_amout
+  = f.input :income
+  = f.input :dependents_number
+  = f.input :address_years
+  = f.input :payment_terms, collection: Requisition.payment_terms.collect { |s| [s[0].humanize, s[0]] }, input_html: { class: 'form-control' }, include_blank: true
+  = f.input :bank
+  = f.input :marital_status, collection: Requisition.marital_statuses.collect { |s| [s[0].humanize, s[0]] }, input_html: { class: 'form-control' }, include_blank: true
+  .mb-20
+    = f.simple_fields_for :personal_references do |ff|
+      .form-group.mb-20
+        %h3 Referencia #{ff.index + 1}
+        = ff.input :first_name
+        = ff.input :second_name
+        = ff.input :first_last_name
+        = ff.input :second_last_name
+        = ff.input :cell_phone_number
+  = f.input :has_sgmm, wrapper: :vertical_radio_and_checkboxes
+  = f.input :has_imss, wrapper: :vertical_radio_and_checkboxes
+  = f.input :has_car, wrapper: :vertical_radio_and_checkboxes
+  = f.input :comment
+  = f.submit 'Guardar', class: 'btn btn-primary btn-lg btn-block'

@@ -1,0 +1,7 @@
+%tr
+  %td= requisition.requested_amout
+  %td= requisition.payment_terms
+  %td= requisition.bank
+  %td
+    = link_to t('actions.edit'), edit_requisition_path(requisition), class: 'btn btn-success'
+    = link_to t('actions.delete'), requisition_path(requisition), data: { confirm: t('messages.are_you_sure') }, method: :delete, class: 'btn btn-danger'
