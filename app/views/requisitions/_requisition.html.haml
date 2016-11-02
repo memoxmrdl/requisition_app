@@ -1,6 +1,6 @@
 %tr
   %td= number_to_currency requisition.requested_amout, unit: '$', format: '%u %n', separator: ".", delimiter: ","
-  %td= requisition.payment_terms
+  %td= t("enums.requisition.payment_terms.#{requisition.payment_terms}")
   %td= requisition.bank
   %td
     = link_to t('actions.edit'), edit_requisition_path(requisition), class: 'btn btn-success'

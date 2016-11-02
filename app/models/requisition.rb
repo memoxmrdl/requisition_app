@@ -23,13 +23,13 @@ class Requisition < ActiveRecord::Base
 
   def self.marital_status_attributes_for_select
     marital_statuses.map do |marital_status, _|
-      [I18n.t("enums.marital_status.#{marital_status}"), marital_status]
+      [I18n.t("enums.#{model_name.i18n_key}.marital_status.#{marital_status}"), marital_status]
     end
   end
 
   def self.payment_terms_attributes_for_select
     payment_terms.map do |payment_term, _|
-      [I18n.t("enums.payment_terms.#{payment_term}"), payment_term]
+      [I18n.t("enums.#{model_name.i18n_key}.payment_terms.#{payment_term}"), payment_term]
     end
   end
 
