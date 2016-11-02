@@ -1,5 +1,5 @@
 %tr
-  %td= requisition.requested_amout
+  %td= number_to_currency requisition.requested_amout, unit: '$', format: '%u %n', separator: ".", delimiter: ","
   %td= requisition.payment_terms
   %td= requisition.bank
   %td
