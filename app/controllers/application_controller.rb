@@ -14,8 +14,9 @@ class ApplicationController < ActionController::Base
     if resource.profile&.valid?
       super resource
     else
-      flash[:alert] = t('messages.missing_profile')
-      edit_profile_path(resource.profile)
+      path = edit_profile_path(resource.profile)
+      flash[:alert] = t('messages.missing_profile_html', path: path)
+      path
     end
   end
 
