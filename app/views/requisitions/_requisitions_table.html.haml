@@ -1,0 +1,7 @@
+%table.table.table-condensed
+  %thead
+    %th= Requisition.human_attribute_name(:requested_amout)
+    %th= Requisition.human_attribute_name(:payment_terms)
+    %th= Requisition.human_attribute_name(:bank)
+    %th= t('titles.actions')
+  %tbody= render @requisitions

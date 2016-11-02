@@ -19,9 +19,23 @@ class Requisition < ActiveRecord::Base
   enum marital_status: [:single, :engaged, :married, :divorced, :widower]
   enum payment_terms: [:counted, :payment_one, :payment_second, :payment_third]
 
+  accepts_nested_attributes_for :personal_references, allow_destroy: true
+
+  def self.marital_status_attributes_for_select
+    marital_statuses.map do |marital_status, _|
+      [I18n.t("enums.#{model_name.i18n_key}.marital_status.#{marital_status}"), marital_status]
+    end
+  end
+
+  def self.payment_terms_attributes_for_select
+    payment_terms.map do |payment_term, _|
+      [I18n.t("enums.#{model_name.i18n_key}.payment_terms.#{payment_term}"), payment_term]
+    end
+  end
+
   private
 
   def check_profile
-    errors.add(:base, 'Para crear una solicitud debe completar su perfil') unless user && user.profile&.valid?
+    errors.add(:base, I18n.t('messages.missing_profile_model')) unless user && user.profile&.valid?
   end
 end

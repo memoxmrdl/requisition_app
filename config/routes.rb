@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, except: [:destroy, :show]
+  resources :requisitions, except: [:show]
 
   root 'home#index'
 end
